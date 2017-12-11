@@ -1,16 +1,20 @@
 from flask import Flask, g
+from flask_admin import Admin
 
-from .blueprints import stats_bp, user_bp
+from .blueprints import views_bp, unauth_views_bp
 from .database import init_app_db
+from .admin import configure_admin
 
 def create_app(config=None, environment=None):
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='static')
     app.config.from_object('instance.base.Config')
+    app.config.from_pyfile('settings.py', silent=True)
 
     init_app_db(app)
     configure_hook(app)
+    configure_admin(app, app.config['SESSION'])
 
-    for blueprint in [stats_bp, user_bp]:
+    for blueprint in [unauth_views_bp, views_bp]:
         app.register_blueprint(blueprint)
 
     return app

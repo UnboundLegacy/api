@@ -6,7 +6,7 @@ Base = declarative_base()
 
 
 def init_app_db(app):
-    import unbound_legacy_api.database.models
+    import career_connections.database.models
 
     if 'SQLALCHEMY_ENGINE' not in app.config:
         app.config['SQLALCHEMY_ENGINE'] = sqlalchemy.create_engine(app.config['DB_CONNECTION_STRING'], echo=True)

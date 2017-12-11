@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Career Connections by Unbound Legacy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/main.css">
+    <script src="https://use.fontawesome.com/5519866582.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center signin-header">
+                <h1>Career Connections</h1>
+                <span>By Unbound Legacy</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="sign-in-box">
+                    <h3>Sign In</h3>
+                    <p>Already have an Unbound Legacy's Career Connections Account? Sign in now!</p>
+
+                    <form method="POST" action="/signin">
+                        {{ login_form.csrf_token }}
+                        {{ login_form.username(size=20, class_='form-field full-width', placeholder='Username') }}<br>
+                        {{ login_form.password(size=20, class_='form-field full-width', placeholder='Password') }}<br>
+                        <input type="submit" value="Sign In">
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="sign-in-box">
+                    <h3>Sign Up</h3>
+
+                    <p>Not yet signed up for Career Connections? Give us your name and email address and we will send you and invite once we verify you are an Unbound Student!</p>
+                    
+                    <form method="POST" action="/signup">
+                        {{ login_form.csrf_token }}
+                        {{ signup_form.first_name(class_='form-field', placeholder='First Name') }}
+                        {{ signup_form.last_name(class_='form-field', placeholder='Last Name') }}<br>
+                        {{ signup_form.email(class_='form-field full-width', placeholder='Email') }}<br>
+                        <input type="submit" value="Sign Up">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
