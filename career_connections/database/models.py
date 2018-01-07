@@ -33,3 +33,32 @@ class User(Base, ModelMixIn):
     username = Column(String(255))
     password = Column(String(255))
     email = Column(String(255))
+    first_name = Column(String(255))
+    last_name = Column(String(255))
+    phone_number = Column(String(32))
+
+
+class PendingUser(Base, ModelMixIn):
+    __tablename__ = 'pending_user'
+
+    pending_user_id = Column(Integer, primary_key=True)
+    first_name = Column(String(255))
+    last_name = Column(String(255))
+    email = Column(String(255))
+
+class Address(Base, ModelMixIn):
+    __tablename__ = 'address'
+
+    address_id = Column(Integer, primary_key=True)
+    first_line = Column(String(255))
+    second_line = Column(String(255))
+
+class Education(Base, ModelMixIn):
+    __tablename__ = 'education'
+
+    education_id = Column(Integer, primary_key=True)
+
+class Job(Base, ModelMixIn):
+    __tablename__ = 'job'
+
+    job_id = Column(Integer, primary_key=True)

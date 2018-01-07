@@ -1,0 +1,120 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+
+.sidebar {
+    background-color: lightgrey;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.navbar-light .navbar-toggler {
+    border: none;
+    padding: .25em;
+    margin: 0 .5em;
+}
+
+.sidebar-menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+}
+
+.navbar {
+    justify-content: flex-start;
+}
+
+.sidebar-menu-item-text {
+    display: none;
+    visibility: hidden;
+    color: #202e59;
+}
+
+.sidebar-menu-item i {
+    color: #202e59;
+}
+
+.sidebar-menu-item:hover {
+    background-color: #3ae8d1;
+}
+
+@media screen and (min-width: 0px) and (max-width: 640px) {
+    .navbar-toggler {
+        display: block;
+    }
+    .sidebar {
+        visibility: hidden;
+    }
+}
+
+@media screen and (min-width: 641px) and (max-width: 990px) {
+    .navbar-toggler {
+        display: none;
+    }
+    .sidebar {
+        left: 0;
+        height: 100%;
+        width: 4rem;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .navbar-toggler {
+        display: none;
+    }
+    .sidebar {
+        left: 0;
+        height: 100%;
+        width: 13rem;
+    }
+    .sidebar-menu-item {
+        padding-left: 0.5rem;
+        justify-content: flex-start;
+    }
+
+    .sidebar-menu-item-text {
+        padding-left: 0.5rem;
+        display: block;
+        visibility: visible;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+.padding {
+    padding: 1rem;
+}
+
+.signin-header {
+    padding: 5rem;
+}
+
+.sign-in-box {
+    padding: 1rem;
+    background-color: #f7f7f7;
+    color: #1f3e63;
+    text-align: center;
+}
+
+.form-field {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    /* display: block; */
+    /* width: 50%; */
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    margin-bottom: 10px;
+    font: 16px Arial, Helvetica, sans-serif;
+    height: 45px;
+}

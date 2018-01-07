@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+.DS_Store
+.vscode
+
+# Default DB file
+career.db
