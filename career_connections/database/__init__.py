@@ -9,7 +9,7 @@ def init_app_db(app):
     import career_connections.database.models
 
     if 'SQLALCHEMY_ENGINE' not in app.config:
-        app.config['SQLALCHEMY_ENGINE'] = sqlalchemy.create_engine(app.config['DB_CONNECTION_STRING'], echo=True)
+        app.config['SQLALCHEMY_ENGINE'] = sqlalchemy.create_engine(app.config['DB_CONNECTION_STRING'], echo=False)
     if 'SESSION' not in app.config:
         engine = app.config['SQLALCHEMY_ENGINE']
         session_factory = sessionmaker(bind=engine)

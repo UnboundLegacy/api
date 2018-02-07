@@ -14,7 +14,8 @@ def hash_password(password):
 
 def check_credentials(username, password):
     user = g.db.query(User).filter_by(username=username).one_or_none()
-    if user is not None and bcrypt.checkpw(password.encode('utf8'), user.password.encode('utf8')):
+    hashed_password = user.password if isinstance(user.password, str) else user.password.decode('utf8')
+    if user is not None and bcrypt.checkpw(password.encode('utf8'), hashed_password.encode('utf8')):
         return user
     return None
 

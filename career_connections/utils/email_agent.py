@@ -1,21 +1,42 @@
+import re
 import smtplib
 
-from flask import render_template
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+from flask import render_template, g
+
+TITLE_PATTERN = re.compile(r'<title>(?P<title>.*)</title>')
 
 
 class Message():
     '''
     Base Class for a generic email
     '''
+
     def __init__(self, sender, recipients, template, context):
         self.sender = sender
         self.recipients = recipients
         self.template = template
         self.ctx = context
 
-    def render_template(self):
+        self.ctx['web_app_base'] = 'localhost:5000'
+
+    def render_message(self):
         '''Render the email using Flask's Jinja2 environment'''
-        return render_template(self.template, **self.ctx)
+        body = render_template(self.template, **self.ctx)
+        msg = MIMEText(body, 'html')
+        msg['Subject'] = self.get_title(body)
+        msg['From'] = self.sender
+        msg['To'] = self.recipients
+        # msg.attach(MIMEText(body, 'html'))
+        return msg.as_string()
+
+    def get_title(self, body):
+        match = re.search(TITLE_PATTERN, body)
+        if not match:
+            return 'Unbound Legacy'
+        return match.groupdict().get('title', 'Unbound Legacy')
 
 
 class BaseEmailAgent():
@@ -44,7 +65,7 @@ class BaseEmailAgent():
 
         Improve: make this asynchronous
         '''
-        self.server.send_message(message.render_template(), message.sender, message.recipients)
+        self.server.sendmail(message.sender, message.recipients, message.render_message())
 
 
 class GmailAgent(BaseEmailAgent):

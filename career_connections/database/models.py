@@ -45,6 +45,9 @@ class PendingUser(Base, ModelMixIn):
     first_name = Column(String(255))
     last_name = Column(String(255))
     email = Column(String(255))
+    is_approved = Column(Boolean)
+    invite_code = Column(String(255))
+
 
 class Address(Base, ModelMixIn):
     __tablename__ = 'address'
